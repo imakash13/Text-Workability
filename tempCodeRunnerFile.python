@@ -1,0 +1,46 @@
+# def generate_leaderboard():
+#     # Read input
+#     N = int(input())
+#     students = []
+#     for _ in range(N):
+#         name, marks = input().split()
+#         students.append((name, int(marks)))
+
+#     # Sort students by marks (descending) and then alphabetically (ascending)
+#     students.sort(key=lambda x: (-x[1], x[0]))
+
+#     # Assign ranks
+#     rank = 1
+#     prev_marks = students[0][1]
+#     for i, (name, marks) in enumerate(students):
+#         if marks < prev_marks:
+#             rank = i + 1
+#             prev_marks = marks
+#         print(f"{rank} {name}")
+
+# # Example usage
+# generate_leaderboard()
+
+def bubble_sort(arr):
+    n = len(arr)
+    for i in range(n):
+        swapped = False
+        for j in range(n - i - 1):
+            # Compare values (marks) for descending order
+            if arr[j][1] < arr[j + 1][1]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+                swapped = True
+            # If values are equal, compare names (alphabetically) for ascending order
+            elif arr[j][1] == arr[j + 1][1] and arr[j][0] > arr[j + 1][0]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+                swapped = True
+        if not swapped:
+            break
+def solve():
+    n = int(input())
+    arr = []
+    for i in range(n):
+        name,marks = input().split()
+        arr.append(name,marks)
+    bubble_sort(arr)
+    print(arr)
